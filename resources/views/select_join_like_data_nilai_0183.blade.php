@@ -50,37 +50,38 @@
   </div>
 </nav>
   <body>
-  <h1 style="text-align:center; padding-top:10px">DATA SISWA</h1>
+  <h1 style="text-align:center; padding-top:10px">DATA NILAI</h1>
     <div style="overflow-x: auto">
         <table>
             <thead>
                 <tr>
                     <th style="text-align:center">No</th>
-                    <th style="text-align:center">NIS</th>
                     <th style="text-align:center">Nama Siswa</th>
-                    <th style="text-align:center">Jenis Kelamin</th>
-                    <th style="text-align:center">Alamat</th>
+                    <th style="text-align:center">Asal Kota</th>
+                    <th style="text-align:center">Kelas</th>
+                    <th style="text-align:center">Mata Pelajaran</th>
+                    <th style="text-align:center">Nilai</th>
                 </tr>
             </thead>
             <tbody>
             <tbody>
                 <?php $no=1 ?>
-                @foreach ($datasiswa as $siswa)
+                @foreach ($nilai as $n)
                 <tr>
                     <td>{{ $no++ }}</td>
-                    <td>{{ $siswa->nis }}</td>
-                    <td>{{ $siswa->nama_siswa }}</td>
-                    <td>{{ $siswa->kelamin}}</td>
-                    <td>{{ $siswa->alamat_siswa}}</td>
+                    <td>{{ $n->nama_siswa }}</td>
+                    <td>{{ $n->alamat_siswa }}</td>
+                    <td>{{ $n->nama_kelas}}</td>
+                    <td>{{ $n->nama_pelajaran}}</td>
+                    <td>{{ $n->nilai}}</td>
                 </tr>
                 @endforeach
             </tbody>
             </tbody>
         </table>    
     </div>
-    <div class="d-grid gap-2 gap-2 col-6 mx-auto" style="padding-top:50px;padding-bottom:50px">
-        <a href="{{url('/detailsiswa/l')}}" class="btn btn-dark">Cek Detail Data Siswa Laki-Laki</a>
-        <a href="{{url('/detailsiswa/p')}}" class="btn btn-dark">Cek Detail Data Siswa Perempuan</a>
+    <div class="d-grid gap-2 gap-2 col-6 mx-auto" style="padding-top:50px; padding-bottom:50px">
+        <a href="{{url('/nilai/lulus')}}" class="btn btn-dark">Lihat Data Nilai Lulus Siswa Kota Jakarta</a>
     </div>
   </body>
 </html>

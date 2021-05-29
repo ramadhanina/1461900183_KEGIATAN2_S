@@ -16,11 +16,51 @@ class siswaController extends Controller
     {
         //
         $datasiswa = DB::table('data_siswa')
-            -> select('id_siswa','nis','nama_siswa','kelamin','alamat_siswa')
+            -> select('nis','nama_siswa','kelamin','alamat_siswa')
             -> get();
             return view('select_datasiswa_0183', ['datasiswa' => $datasiswa]);
+
     }
 
+    public function select_where1(){
+        $detailsiswa = DB::table('data_siswa')
+        -> select('nama_siswa','alamat_siswa','telpon_siswa')
+        -> where('kelamin','=','laki-laki')
+        -> get();
+        return view('select_where_datasiswa_laki_0183', ['detailsiswa' => $detailsiswa]);
+    }
+
+    public function select_where2(){
+        $detailsiswa = DB::table('data_siswa')
+        -> select('nama_siswa','alamat_siswa','telpon_siswa')
+        -> where('kelamin','=','perempuan')
+        -> get();
+        return view('select_where_datasiswa_perempuan_0183', ['detailsiswa' => $detailsiswa]);
+    }
+
+    public function nilai(){
+        $nilai= DB::table('tbl_nilai')
+        -> join('data_siswa','tbl_nilai.id_siswa','=','data_siswa.id_siswa')
+        -> join('setup_pelajaran','tbl_nilai.id_pelajaran','=','setup_pelajaran.id_pelajaran')
+        -> join('setup_kelas','tbl_nilai.id_kelas','=','setup_kelas.id_kelas')
+        -> select('nama_siswa','alamat_siswa','nama_kelas','nama_pelajaran','nilai')
+        -> orderBy('nama_siswa','ASC')
+        -> get();
+        return view('select_join_like_data_nilai_0183', ['nilai' => $nilai]);
+    }
+
+    public function nilailulus(){
+        $nilailulus = DB::table('tbl_nilai')
+        -> join('data_siswa','tbl_nilai.id_siswa','=','data_siswa.id_siswa')
+        -> join('setup_pelajaran','tbl_nilai.id_pelajaran','=','setup_pelajaran.id_pelajaran')
+        -> join('setup_kelas','tbl_nilai.id_kelas','=','setup_kelas.id_kelas')
+        -> select('nama_siswa','alamat_siswa','nama_kelas','nama_pelajaran','nilai')
+        -> where('nilai','>','70')
+        -> where('alamat_siswa','like','J%')
+        -> orderBy('nama_siswa','ASC')
+        -> get();
+        return view('select_join_like_nilai_lulus_0183', ['nilailulus' => $nilailulus]);
+    }
     /**
      * Show the form for creating a new resource.
      *

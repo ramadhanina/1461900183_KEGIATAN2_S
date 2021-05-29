@@ -50,28 +50,26 @@
   </div>
 </nav>
   <body>
-  <h1 style="text-align:center; padding-top:10px">DATA SISWA</h1>
+  <h1 style="text-align:center; padding-top:10px">DETAIL DATA SISWA LAKI-LAKI</h1>
     <div style="overflow-x: auto">
         <table>
             <thead>
                 <tr>
                     <th style="text-align:center">No</th>
-                    <th style="text-align:center">NIS</th>
                     <th style="text-align:center">Nama Siswa</th>
-                    <th style="text-align:center">Jenis Kelamin</th>
                     <th style="text-align:center">Alamat</th>
+                    <th style="text-align:center">No Telp</th>
                 </tr>
             </thead>
             <tbody>
             <tbody>
                 <?php $no=1 ?>
-                @foreach ($datasiswa as $siswa)
+                @foreach ($detailsiswa as $siswa)
                 <tr>
                     <td>{{ $no++ }}</td>
-                    <td>{{ $siswa->nis }}</td>
                     <td>{{ $siswa->nama_siswa }}</td>
-                    <td>{{ $siswa->kelamin}}</td>
-                    <td>{{ $siswa->alamat_siswa}}</td>
+                    <td>{{ $siswa->alamat_siswa }}</td>
+                    <td>{{ $siswa->telpon_siswa }}</td>
                 </tr>
                 @endforeach
             </tbody>
@@ -79,8 +77,7 @@
         </table>    
     </div>
     <div class="d-grid gap-2 gap-2 col-6 mx-auto" style="padding-top:50px;padding-bottom:50px">
-        <a href="{{url('/detailsiswa/l')}}" class="btn btn-dark">Cek Detail Data Siswa Laki-Laki</a>
-        <a href="{{url('/detailsiswa/p')}}" class="btn btn-dark">Cek Detail Data Siswa Perempuan</a>
+        <a href="{{url('/datasiswa')}}" class="btn btn-dark">Kembali</a>
     </div>
   </body>
 </html>
